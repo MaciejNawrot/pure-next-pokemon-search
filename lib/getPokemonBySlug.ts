@@ -32,12 +32,15 @@ export interface PokemonResponse {
   };
 }
 
-export async function getPokemonBySlug(name: string): Promise<PokemonResponse> {
-  // await new Promise((resolve) => setTimeout(resolve, 20000));
+const api = "https://pokeapi.co/api/v2/pokemon";
 
-  const url = `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`;
+export async function getPokemonBySlug(name: string): Promise<PokemonResponse> {
+  const url = `${api}/${name.toLowerCase()}`;
   const response = await fetch(url);
 
+  if (response.status === 500) {
+    throw new Error("500");
+  }
 
   if (!response.ok) {
     notFound();

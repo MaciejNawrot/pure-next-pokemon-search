@@ -1,7 +1,5 @@
 export default function Home() {
   return (
-    <>
-      <div> Search for your pokemon </div>
-    </>
+    <p className="text-2xl text-center p-4">Search for pokemon!</p>
   );
 }
